@@ -22,7 +22,7 @@ import com.qa.assignment.factory.DriverFactory;
 public class ElementUtil {
 
 	private WebDriver driver;
-	
+
 	public ElementUtil(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -65,7 +65,7 @@ public class ElementUtil {
 	public WebElement getElement(By locator) {
 		WebElement ele = driver.findElement(locator);
 		if(Boolean.parseBoolean(DriverFactory.highlight)) {
-		
+
 		}
 		return ele;
 	}
@@ -283,7 +283,7 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
-	
+
 	/**
 	 * An expectation for checking that an element is present on the DOM of a page
 	 * and visible. Visibility means that the element is not only displayed but also
@@ -295,7 +295,7 @@ public class ElementUtil {
 	 */
 	public WebElement waitForElementVisible(By locator, int timeOut, int pollingTime) {
 		WebDriverWait wait = new WebDriverWait(driver, 
-					Duration.ofSeconds(timeOut), Duration.ofSeconds(pollingTime));
+				Duration.ofSeconds(timeOut), Duration.ofSeconds(pollingTime));
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
@@ -398,7 +398,7 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		return wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameElement));
 	}
-	
+
 	public WebElement waitForElementPresenceWithFluentWait(By locator, int timeOut, int pollingTime) {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
 				.withTimeout(Duration.ofSeconds(timeOut))
@@ -408,17 +408,17 @@ public class ElementUtil {
 				.withMessage(locator + " is not found within the given time......");
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));						
 	}
-	
+
 	public WebElement waitForElementPresenceWithWait(By locator, int timeOut, int pollingTime) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.pollingEvery(Duration.ofSeconds(pollingTime))
-				.ignoring(NoSuchElementException.class)
-				.ignoring(StaleElementReferenceException.class)
-				.withMessage(locator + " is not found within the given time......");
+		.ignoring(NoSuchElementException.class)
+		.ignoring(StaleElementReferenceException.class)
+		.withMessage(locator + " is not found within the given time......");
 
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));						
-		
-		
+
+
 	}
 
 }
