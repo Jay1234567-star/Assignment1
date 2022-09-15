@@ -32,7 +32,12 @@ public class AdvanceResultPage {
 		
 	}
 	
-	public void clickOnResultLink(String resultItem) {
+	public int getSearchDataListCount() {
+		return eleUtil.waitForElementsVisible(resultList, 5).size();
+		
+	}
+	
+	public SearchInfoPage clickOnResultLink(String resultItem) {
 		initializeResultList();
 		for (WebElement e : advSearchResultList ) {
 			String text = e.getText();
@@ -42,5 +47,6 @@ public class AdvanceResultPage {
 				break;
 			}
 		}
+		return new SearchInfoPage(driver);
 	}
 }

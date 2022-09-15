@@ -8,6 +8,7 @@ import com.qa.assignment.factory.DriverFactory;
 import com.qa.assignment.pages.AdvanceResultPage;
 import com.qa.assignment.pages.AdvanceSearchPage;
 import com.qa.assignment.pages.ResultsPage;
+import com.qa.assignment.pages.SearchInfoPage;
 import com.qa.assignment.pages.WikiPage;
 
 
@@ -21,6 +22,7 @@ public class BaseTest {
 	ResultsPage resultPage1;
 	AdvanceSearchPage advSearchPage;
 	AdvanceResultPage advResPage;
+	SearchInfoPage searchInfoPage;
 
 	@BeforeTest 
 	public void setup() {
@@ -31,6 +33,7 @@ public class BaseTest {
 		wikipage = new WikiPage(driver);
 		advSearchPage = new AdvanceSearchPage(driver);
 		resultPage = new ResultsPage(driver);
+		searchInfoPage = new SearchInfoPage(driver);
 	}
 
 	@AfterTest
